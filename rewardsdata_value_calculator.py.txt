@@ -1,0 +1,17 @@
+# rewards/data_value_calculator.py
+
+from .data_desirability_lookup import DataDesirabilityLookup
+
+class DataValueCalculator:
+    """
+    Calculates the value of a scraped data entity based on desirability and other factors.
+    """
+
+    def __init__(self):
+        self.lookup = DataDesirabilityLookup()
+
+    def calculate_value(self, data_entity) -> float:
+        # Example: Use label and possibly engagement metrics
+        desirability = self.lookup.get_desirability(getattr(data_entity, "label", "normal"))
+        # You can add more sophisticated logic here (e.g., engagement, recency, etc.)
+        return desirability

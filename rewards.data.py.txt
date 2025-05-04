@@ -1,0 +1,22 @@
+# rewards/data.py
+
+from typing import Dict, Any
+
+class ScrapedData:
+    def __init__(self, tweet_id: str, user_id: str, content: str, desirability: float, timestamp: str, extra: Dict[str, Any] = None):
+        self.tweet_id = tweet_id
+        self.user_id = user_id
+        self.content = content
+        self.desirability = desirability
+        self.timestamp = timestamp
+        self.extra = extra or {}
+
+    def to_dict(self):
+        return {
+            "tweet_id": self.tweet_id,
+            "user_id": self.user_id,
+            "content": self.content,
+            "desirability": self.desirability,
+            "timestamp": self.timestamp,
+            **self.extra
+        }

@@ -1,0 +1,20 @@
+# rewards/data_desirability_lookup.py
+
+from typing import Dict
+
+class DataDesirabilityLookup:
+    """
+    Lookup table or function for dynamic desirability scoring.
+    """
+
+    def __init__(self):
+        # Example: Could be loaded from a config or database
+        self.label_weights = {
+            "breaking_news": 1.5,
+            "trending": 1.2,
+            "normal": 1.0,
+            "spam": 0.1
+        }
+
+    def get_desirability(self, label: str) -> float:
+        return self.label_weights.get(label, 1.0)

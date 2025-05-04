@@ -1,0 +1,21 @@
+# rewards/miner_scorer.py
+
+from .data_value_calculator import DataValueCalculator
+
+class MinerScorer:
+    """
+    Scores miners (scraper workers/accounts) based on the value of the data they provide.
+    """
+
+    def __init__(self):
+        self.value_calculator = DataValueCalculator()
+
+    def score(self, miner_id: str, data_entities: list) -> float:
+        """
+        Calculate a total score for a miner based on their submitted data.
+        """
+        total_score = 0.0
+        for entity in data_entities:
+            value = self.value_calculator.calculate_value(entity)
+            total_score += value
+        return total_score
