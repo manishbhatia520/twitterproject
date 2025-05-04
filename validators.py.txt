@@ -1,0 +1,15 @@
+from neurons.miner import Miner
+
+class Validator:
+    def __init__(self):
+        self.miner = Miner()
+
+    def validate_and_store(self, entities):
+        # Example: Add validation logic here
+        valid_entities = [e for e in entities if self.is_valid(e)]
+        return self.miner.store_entities(valid_entities)
+
+    def is_valid(self, entity):
+        # Implement your validation logic
+        # Example: return True if entity meets criteria
+        return True
