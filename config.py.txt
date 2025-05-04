@@ -1,0 +1,72 @@
+import argparse
+
+def get_config():
+    parser = argparse.ArgumentParser(description="Twitter Scraper Configuration")
+    
+    # Database configuration
+    parser.add_argument(
+        "--database.type",
+        type=str,
+        help="Database type (sqlite or postgres)",
+        default="postgres",
+    )
+    parser.add_argument(
+        "--database.postgres.host",
+        type=str,
+        help="PostgreSQL host",
+        default="localhost",
+    )
+    parser.add_argument(
+        "--database.postgres.port",
+        type=int,
+        help="PostgreSQL port",
+        default=5432,
+    )
+    parser.add_argument(
+        "--database.postgres.user",
+        type=str,
+        help="PostgreSQL user",
+        default="postgres",
+    )
+    parser.add_argument(
+        "--database.postgres.password",
+        type=str,
+        help="PostgreSQL password",
+        default="password",
+    )
+    parser.add_argument(
+        "--database.postgres.dbname",
+        type=str,
+        help="PostgreSQL database name",
+        default="twitter_scraper",
+    )
+    
+    # Redis cache configuration
+    parser.add_argument(
+        "--database.use_cache",
+        type=bool,
+        help="Use Redis cache",
+        default=True,
+    )
+    parser.add_argument(
+        "--database.redis_url",
+        type=str,
+        help="Redis URL",
+        default="redis://localhost:6379/0",
+    )
+    parser.add_argument(
+        "--database.cache_ttl",
+        type=int,
+        help="Cache TTL in seconds",
+        default=3600,
+    )
+    
+    # Scraper configuration
+    parser.add_argument(
+        "--scraper.max_workers",
+        type=int,
+        help="Maximum number of worker instances",
+        default=100,
+    )
+    
+    return parser.parse_args()
