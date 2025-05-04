@@ -1,0 +1,2 @@
+# scraping/__init__.py
+# Marks the scraping folder as a Python package.
